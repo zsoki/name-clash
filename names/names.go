@@ -12,6 +12,7 @@ type Name struct {
 	Text     string
 	Symbolic []byte
 	Edges    []*Edge
+	Wins     int
 }
 
 type Edge struct {

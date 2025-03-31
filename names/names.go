@@ -28,7 +28,7 @@ func (e *Edge) neighborOf(from *Name) *Name {
 	return nil
 }
 
-func Run(filename, example string, maxDistance int) ([]*Name, []*Edge) {
+func CreateNameGraph(filename, example string, maxDistance int) ([]*Name, []*Edge) {
 	lines := make(chan string)
 	go ReadLines(filename, lines)
 
@@ -131,9 +131,12 @@ func levenshteinDistance(source, target []byte) int {
 	return table[tableRows-1][tableCols-1]
 }
 
+// Order is important! We want to replace multiGraphs with more characters first
+// (to avoid interpreting 'tty' as 'tt' + 'y' for example)
 var multiGraphs = []string{
-	"cs", "dz", "dzs", "gy", "ly", "ny", "sz", "ty", "zs",
-	"bb", "cc", "ccs", "dd", "ddz", "ddzs", "ff", "gg", "ggy", "hh", "jj", "kk", "ll", "lly", "mm", "nn", "nny", "pp", "rr", "ss", "ssz", "tt", "tty", "vv", "zz", "zzs",
+	"ddzs",
+	"dzs", "ccs", "ddz", "ggy", "lly", "nny", "ssz", "tty", "zzs",
+	"cs", "dz", "gy", "ly", "ny", "sz", "ty", "zs", "bb", "cc", "dd", "ff", "gg", "hh", "jj", "kk", "ll", "mm", "nn", "pp", "rr", "ss", "tt", "vv", "zz",
 }
 
 var diacritics = []rune{

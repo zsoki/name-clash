@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
-	names, edges := names.Run("resources/noi.txt", "Anna", 1)
-	graph.ExportGraphML(names, edges)
+	nameNodes, nameEdges := names.CreateNameGraph("resources/noi.txt", "Anna", 1)
+	matchups := names.CreateRandomMatchups(nameNodes)
+	println(matchups)
+	graph.ExportGraphML(nameNodes, nameEdges)
 }

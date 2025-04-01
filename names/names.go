@@ -13,6 +13,7 @@ type Name struct {
 	Symbolic []byte
 	Edges    []*Edge
 	Wins     int
+	Losses   int
 }
 
 type Edge struct {

@@ -2,15 +2,27 @@ package main
 
 import (
 	"fmt"
-	"name-clash/graph"
 	"name-clash/names"
 )
 
 func main() {
-	nameNodes, nameEdges := names.CreateNameGraph("resources/noi.txt", "Anna", 1)
+	nameNodes, _ := names.CreateNameGraph("resources/test.txt", "Test", 1)
 	tournament := names.CreateTournament(nameNodes)
-	fmt.Printf("Tournament: %v\n", tournament)
-	tournament = names.Vote(tournament, 0, 0)
-	tournament = names.Vote(tournament, 0, 1)
-	graph.ExportGraphML(nameNodes, nameEdges)
+	var champ *names.Name = &names.Name{Text: "None"}
+	fmt.Printf("Tournament: %v\nChampion: %v\n\n", tournament, champ.Text)
+	tournament, champ = names.Vote(tournament, 0, 0)
+	fmt.Printf("Tournament: %v\nChampion: %v\n\n", tournament, champ.Text)
+	tournament, champ = names.Vote(tournament, 0, 0)
+	fmt.Printf("Tournament: %v\nChampion: %v\n\n", tournament, champ.Text)
+	tournament, champ = names.Vote(tournament, 0, 0)
+	fmt.Printf("Tournament: %v\nChampion: %v\n\n", tournament, champ.Text)
+	tournament, champ = names.Vote(tournament, 0, 0)
+	fmt.Printf("Tournament: %v\nChampion: %v\n\n", tournament, champ.Text)
+	tournament, champ = names.Vote(tournament, 0, 0)
+	fmt.Printf("Tournament: %v\nChampion: %v\n\n", tournament, champ.Text)
+	tournament, champ = names.Vote(tournament, 0, 0)
+	fmt.Printf("Tournament: %v\nChampion: %v\n\n", tournament, champ.Text)
+	tournament, champ = names.Vote(tournament, 0, 0)
+	fmt.Printf("Tournament: %v\nChampion: %v\n\n", tournament, champ.Text)
+	//graph.ExportGraphML(nameNodes, nameEdges)
 }
